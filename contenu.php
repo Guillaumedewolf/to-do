@@ -59,8 +59,54 @@
 			<!-- creer en php -->
 			<?php echo $listeTacheArchive ?>
 		</div>
-		
 	</div>
-	<div><?php include 'formulaire.php' ?></div>
+	<div id="formulaireAjout">
+	<div><button id="formulaireCacher" >+</button>
+	<div id="ajoutTache"><?php include 'formulaire.php' ?></div>
+	</div>
+
+
+	<style>
+		body{
+			width: 30%;
+			margin: auto;
+			border: solid 1px black;
+			text-align: center;
+		}
+		#formulaireAjout{
+			width: 100%;
+		}
+		#formulaireCacher {
+				border-radius: 5%;
+				font-size: 60px;
+				background-color: green;
+				color: black;
+				width: 80%;
+
+		}
+
+		#ajoutTache {
+			display: none;
+		}
+	</style>
+
+	<script
+			  src="http://code.jquery.com/jquery-3.3.1.js"
+			  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+			  crossorigin="anonymous"></script>
+	<script>
+		$("#formulaireCacher").click(function(){
+				$("#ajoutTache").css("display", "block")
+				$("#formulaireCacher").css("display", "none")
+
+		})
+
+		$("#ajoutTacheForm").click(function(){
+				$("#ajoutTache").css("display", "none")
+				$("#formulaireCacher").css("display", "block")
+
+		})
+		
+	</script>
 </body>
 </html>

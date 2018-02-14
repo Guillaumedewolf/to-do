@@ -28,7 +28,7 @@ if(isset($_POST['ajoutTache'])){
 	<form action="formulaire.php" method="POST">
 		<label for="ajoutTache"></label>
 		<input type="text" name="ajoutTache">
-		<button type="submit">Ajouter</button>
+		<button id="ajoutTacheForm" type="submit">Ajouter</button>
 	</form>
 </body>
 </html>
