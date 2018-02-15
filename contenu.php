@@ -20,7 +20,7 @@
 	$listeTacheArchive ='';
 	for ($i=0; $i < count($listeTache); $i++) { 
 		if($listeTache[$i]["fait"] == false){
-			$listeTacheAfficher .= '<div class="tache"><input type="checkbox" name="' . $i . '" value="' . $listeTache[$i]["tache"] . '" ><span>' . $listeTache[$i]["tache"] . '</span></div>' ;
+			$listeTacheAfficher .= '<div class="tache"><input type="checkbox" id="' . $i . '" name="' . $i . '" value="' . $listeTache[$i]["tache"] . '" ><label for="'. $i .'">' . $listeTache[$i]["tache"] . '</label></div>' ;
 	}
 		else {
 			$listeTacheArchive .= '<div class="tache"><input type="checkbox" checked="" name="' . $i . '" value="' . $listeTache[$i]["tache"] . '"><span><del>' . $listeTache[$i]["tache"] . '</del></span></div>' ;
@@ -64,8 +64,6 @@
 	<div><button id="formulaireCacher" >+</button>
 	<div id="ajoutTache"><?php include 'formulaire.php' ?></div>
 	</div>
-
-
 	<style>
 		body{
 			width: 30%;
@@ -82,11 +80,19 @@
 				background-color: green;
 				color: black;
 				width: 80%;
+				margin-bottom: 20px;
+				margin-top: 10px;
 
 		}
 
 		#ajoutTache {
 			display: none;
+			margin-bottom: 20px;
+			margin-top: 10px;
+		}
+
+		form > button {
+			margin-top: 10px;
 		}
 	</style>
 
