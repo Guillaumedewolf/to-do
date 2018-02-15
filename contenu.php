@@ -15,18 +15,33 @@
 	}
 
 
+
+
+
+
+
 	// ecrire dans "a faire" et "archive"
 	$listeTacheAfficher = '';
 	$listeTacheArchive ='';
-	for ($i=0; $i < count($listeTache); $i++) { 
+	$maxArchive =10;
+	for ($i=count($listeTache)-1; $i > -1; $i--) { 
 		if($listeTache[$i]["fait"] == false){
 			$listeTacheAfficher .= '<div class="tache"><input type="checkbox" id="' . $i . '" name="' . $i . '" value="' . $listeTache[$i]["tache"] . '" ><label for="'. $i .'">' . $listeTache[$i]["tache"] . '</label></div>' ;
 	}
-		else {
-			$listeTacheArchive .= '<div class="tache"><input type="checkbox" checked="" name="' . $i . '" value="' . $listeTache[$i]["tache"] . '"><span><del>' . $listeTache[$i]["tache"] . '</del></span></div>' ;
+		elseif ($listeTache[$i]["fait"] == true && $maxArchive != 0){
+			
+			$listeTacheArchive .= '<div class="tache"><input type="checkbox" disabled="" checked="" name="' . $i . '" value="' . $listeTache[$i]["tache"] . '"><span><del>' . $listeTache[$i]["tache"] . '</del></span></div>' ;
+				$maxArchive--;
+		
+
 	}
 
 	}
+
+
+
+
+
 
 			$listeTache2 = json_encode($listeTache, JSON_FORCE_OBJECT);
 			file_put_contents('todo.json', $listeTache2);
@@ -62,6 +77,7 @@
 	</div>
 	<div id="formulaireAjout">
 	<div><button id="formulaireCacher" >+</button>
+		<!-- <button id="clean" >CLEAN</button> -->
 	<div id="ajoutTache"><?php include 'formulaire.php' ?></div>
 	</div>
 	<style>
@@ -84,6 +100,15 @@
 				margin-top: 10px;
 
 		}
+		/*#clean {
+				border-radius: 5%;
+				font-size: 40px;
+				background-color: red;
+				color: black;
+				width: 80%;
+				margin-bottom: 20px;
+				margin-top: 10px;
+			}*/
 
 		#ajoutTache {
 			display: none;
@@ -101,12 +126,14 @@
 		$("#formulaireCacher").click(function(){
 				$("#ajoutTache").css("display", "block")
 				$("#formulaireCacher").css("display", "none")
+				$("#clean").css("display", "none")
 
 		})
 
 		$("#ajoutTacheForm").click(function(){
 				$("#ajoutTache").css("display", "none")
 				$("#formulaireCacher").css("display", "block")
+				$("#clean").css("display", "block")
 
 		})
 		
